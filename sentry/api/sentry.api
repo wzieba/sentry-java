@@ -937,8 +937,10 @@ public class io/sentry/SpanContext : java/lang/Cloneable {
 	public fun getOperation ()Ljava/lang/String;
 	public fun getParentSpanId ()Lio/sentry/SpanId;
 	public fun getSampled ()Ljava/lang/Boolean;
+	public fun getSpanId ()Lio/sentry/SpanId;
 	public fun getStatus ()Lio/sentry/SpanStatus;
 	public fun getTags ()Ljava/util/Map;
+	public fun getTraceId ()Lio/sentry/protocol/SentryId;
 	public fun setDescription (Ljava/lang/String;)V
 	public fun setOperation (Ljava/lang/String;)V
 	public fun setStatus (Lio/sentry/SpanStatus;)V
@@ -1482,6 +1484,7 @@ public final class io/sentry/protocol/SdkInfo : io/sentry/IUnknownPropertiesCons
 
 public final class io/sentry/protocol/SdkVersion : io/sentry/IUnknownPropertiesConsumer {
 	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
 	public fun acceptUnknownProperties (Ljava/util/Map;)V
 	public fun addIntegration (Ljava/lang/String;)V
 	public fun addPackage (Ljava/lang/String;Ljava/lang/String;)V
@@ -1491,6 +1494,7 @@ public final class io/sentry/protocol/SdkVersion : io/sentry/IUnknownPropertiesC
 	public fun getVersion ()Ljava/lang/String;
 	public fun setName (Ljava/lang/String;)V
 	public fun setVersion (Ljava/lang/String;)V
+	public static fun updateSdkVersion (Lio/sentry/protocol/SdkVersion;Ljava/lang/String;Ljava/lang/String;)Lio/sentry/protocol/SdkVersion;
 }
 
 public final class io/sentry/protocol/SentryException : io/sentry/IUnknownPropertiesConsumer {
@@ -1522,6 +1526,7 @@ public final class io/sentry/protocol/SentryId {
 
 public final class io/sentry/protocol/SentryPackage : io/sentry/IUnknownPropertiesConsumer {
 	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
 	public fun acceptUnknownProperties (Ljava/util/Map;)V
 	public fun getName ()Ljava/lang/String;
 	public fun getVersion ()Ljava/lang/String;
