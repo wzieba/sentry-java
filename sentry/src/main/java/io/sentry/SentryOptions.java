@@ -206,10 +206,10 @@ public class SentryOptions {
   private long sessionTrackingIntervalMillis = 30000; // 30s
 
   /** The distinct Id (generated Guid) used for session tracking */
-  private String distinctId;
+  private @Nullable String distinctId;
 
   /** The server name used in the Sentry messages. */
-  private String serverName;
+  private @Nullable String serverName;
 
   /** Automatically resolve server name. */
   private boolean attachServerName = true;
@@ -220,7 +220,7 @@ public class SentryOptions {
   private @Nullable Boolean enableUncaughtExceptionHandler = true;
 
   /** Sentry Executor Service that sends cached events and envelopes on App. start. */
-  private @NotNull ISentryExecutorService executorService;
+  private @Nullable ISentryExecutorService executorService;
 
   /** connection timeout in milliseconds. */
   private int connectionTimeoutMillis = 5000;
@@ -266,7 +266,7 @@ public class SentryOptions {
    * deduplication prevents from receiving the same exception multiple times when there is more than
    * one framework active that captures errors, for example Logback and Spring Boot.
    */
-  private Boolean enableDeduplication = true;
+  private @Nullable Boolean enableDeduplication = true;
 
   /** Maximum number of spans that can be atteched to single transaction. */
   private int maxSpans = 1000;
@@ -727,7 +727,7 @@ public class SentryOptions {
    *
    * @param tracesSampleRate the sample rate
    */
-  public void setTracesSampleRate(Double tracesSampleRate) {
+  public void setTracesSampleRate(final @Nullable Double tracesSampleRate) {
     if (tracesSampleRate != null && (tracesSampleRate > 1.0 || tracesSampleRate < 0.0)) {
       throw new IllegalArgumentException(
           "The value "
@@ -960,7 +960,7 @@ public class SentryOptions {
    * @return the distinct Id
    */
   @ApiStatus.Internal
-  public String getDistinctId() {
+  public @Nullable String getDistinctId() {
     return distinctId;
   }
 
@@ -1025,7 +1025,7 @@ public class SentryOptions {
    *
    * @return the SentryExecutorService
    */
-  @NotNull
+  @Nullable
   ISentryExecutorService getExecutorService() {
     return executorService;
   }

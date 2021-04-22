@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 public final class SpanId {
   public static final SpanId EMPTY_ID = new SpanId(new UUID(0, 0).toString());
 
-  private final @NotNull String value;
+  private final String value;
 
   public SpanId(final @NotNull String value) {
     this.value = Objects.requireNonNull(value, "value is required");

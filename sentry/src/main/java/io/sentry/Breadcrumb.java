@@ -98,8 +98,13 @@ public final class Breadcrumb implements Cloneable, IUnknownPropertiesConsumer {
    * @return the timestamp
    */
   @SuppressWarnings({"JdkObsolete", "JavaUtilDate"})
-  public @NotNull Date getTimestamp() {
-    return (Date) timestamp.clone();
+  public @Nullable Date getTimestamp() {
+    final Date timestamp = this.timestamp;
+    if (timestamp != null) {
+      return (Date) timestamp.clone();
+    } else {
+      return null;
+    }
   }
 
   /**
@@ -247,7 +252,10 @@ public final class Breadcrumb implements Cloneable, IUnknownPropertiesConsumer {
   public @NotNull Breadcrumb clone() throws CloneNotSupportedException {
     final Breadcrumb clone = (Breadcrumb) super.clone();
 
-    clone.data = CollectionUtils.shallowCopy(data);
+    final Map<String, Object> dataCopy = CollectionUtils.shallowCopy(this.data);
+    if (dataCopy != null) {
+      clone.data = dataCopy;
+    }
     clone.unknown = CollectionUtils.shallowCopy(unknown);
 
     final SentryLevel levelRef = level;

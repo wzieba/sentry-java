@@ -45,7 +45,7 @@ public abstract class SentryBaseEvent {
    *
    * <p>A map or list of tags for this event. Each tag must be less than 200 characters.
    */
-  private Map<String, String> tags;
+  private @Nullable Map<String, String> tags;
 
   /**
    * The release version of the application.
@@ -53,14 +53,14 @@ public abstract class SentryBaseEvent {
    * <p>**Release versions must be unique across all projects in your organization.** This value can
    * be the git SHA for the given project, or a product identifier with a semantic version.
    */
-  private String release;
+  private @Nullable String release;
 
   /**
    * The environment name, such as `production` or `staging`.
    *
    * <p>```json { "environment": "production" } ```
    */
-  private String environment;
+  private @Nullable String environment;
 
   /**
    * Platform identifier of this event (defaults to "other").
@@ -151,11 +151,11 @@ public abstract class SentryBaseEvent {
   }
 
   @ApiStatus.Internal
-  public Map<String, String> getTags() {
+  public @Nullable Map<String, String> getTags() {
     return tags;
   }
 
-  public void setTags(Map<String, String> tags) {
+  public void setTags(final @Nullable Map<String, String> tags) {
     this.tags = tags;
   }
 
@@ -179,19 +179,19 @@ public abstract class SentryBaseEvent {
     tags.put(key, value);
   }
 
-  public String getRelease() {
+  public @Nullable String getRelease() {
     return release;
   }
 
-  public void setRelease(String release) {
+  public void setRelease(final @Nullable String release) {
     this.release = release;
   }
 
-  public String getEnvironment() {
+  public @Nullable String getEnvironment() {
     return environment;
   }
 
-  public void setEnvironment(String environment) {
+  public void setEnvironment(final @Nullable String environment) {
     this.environment = environment;
   }
 

@@ -48,7 +48,7 @@ public final class SentryEnvelopeItem {
   }
 
   // TODO: Should be a Stream
-  public @NotNull byte[] getData() throws Exception {
+  public @Nullable byte[] getData() throws Exception {
     if (data == null && dataFactory != null) {
       data = dataFactory.call();
     }
@@ -59,6 +59,7 @@ public final class SentryEnvelopeItem {
     return header;
   }
 
+  @SuppressWarnings("NullAway")
   public static @NotNull SentryEnvelopeItem fromSession(
       final @NotNull ISerializer serializer, final @NotNull Session session) throws IOException {
     Objects.requireNonNull(serializer, "ISerializer is required.");
@@ -92,6 +93,7 @@ public final class SentryEnvelopeItem {
     }
   }
 
+  @SuppressWarnings("NullAway")
   public static @NotNull SentryEnvelopeItem fromEvent(
       final @NotNull ISerializer serializer, final @NotNull SentryBaseEvent event)
       throws IOException {
@@ -130,6 +132,7 @@ public final class SentryEnvelopeItem {
     }
   }
 
+  @SuppressWarnings("NullAway")
   public static SentryEnvelopeItem fromUserFeedback(
       final @NotNull ISerializer serializer, final @NotNull UserFeedback userFeedback) {
     Objects.requireNonNull(serializer, "ISerializer is required.");
@@ -156,6 +159,7 @@ public final class SentryEnvelopeItem {
     return new SentryEnvelopeItem(itemHeader, () -> cachedItem.getBytes());
   }
 
+  @SuppressWarnings("NullAway")
   public static SentryEnvelopeItem fromAttachment(
       final @NotNull Attachment attachment, final long maxAttachmentSize) {
 
@@ -248,7 +252,7 @@ public final class SentryEnvelopeItem {
     }
 
     public @Nullable byte[] getBytes() throws Exception {
-      if (bytes == null) {
+      if (bytes == null && dataFactory != null) {
         bytes = dataFactory.call();
       }
       return bytes;
