@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Dependencies
+
+- Bump Native SDK from v0.7.0 to v0.13.7 ([#70](https://github.com/wzieba/sentry-java/pull/70))
+  - [changelog](https://github.com/getsentry/sentry-native/blob/master/CHANGELOG.md#0137)
+  - [diff](https://github.com/getsentry/sentry-native/compare/0.7.0...0.13.7)
+
 ## 7.6.0
 
 ### Features
