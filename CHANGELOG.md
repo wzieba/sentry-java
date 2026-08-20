@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Dependencies
+
+- Bump Gradle from v8.5.0 to v9.7.1 ([#86](https://github.com/wzieba/sentry-java/pull/86))
+  - [changelog](https://github.com/gradle/gradle/blob/master/CHANGELOG.md#v971)
+  - [diff](https://github.com/gradle/gradle/compare/v8.5.0...v9.7.1)
+
 ## 7.6.0
 
 ### Features
